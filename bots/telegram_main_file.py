@@ -9,8 +9,8 @@ def start_message(message):
         bot_helper.send_message(message.chat.id, 'Hello there! /help?',
                                 reply_markup=keyboard_settings()
                                 )
-    except Exception as error_in_command:
-        bot_helper.send_message(message.chat.id, error_in_command)
+    except Exception as error:
+        bot_helper.send_message(message.chat.id, f'There is an unpredictable error - {error} try again')
 
 
 @bot_helper.message_handler(commands=['help'])
@@ -30,8 +30,8 @@ def help_user(message):
                                 reply_markup=keyboard_settings()
                                 )
         settings_translate_and_result()
-    except Exception as error_in_command:
-        bot_helper.send_message(message.chat.id, error_in_command)
+    except Exception as error:
+        bot_helper.send_message(message.chat.id, f'There is an unpredictable error - {error} try again')
 
 
 @bot_helper.message_handler(commands=['wiki'])
@@ -47,16 +47,20 @@ def wiki_check(message):
 
 @bot_helper.message_handler(commands=['info'])
 def info(message):
-    bot_helper.message_handler(message.chat.id,
-                               "Hello, I'm the one who made this bot.\n"
-                               "For now it`s giving you the translation of the words you need.\n"
-                               "Later I will add new functions.\n"
-                               "If you have some advices let me know on:\n"
-                               "\n"
-                               "https://t.me/erlihigh\n"
-                               "https://github.com/Ilyadevin\n"
-                               "Good Luck!", reply_markup=keyboard_settings()
-                               )
-    bot_helper.send_message(message.chat.id, 'Also you can help me with development\n'
-                                             'Just contact me with those methods above\n'
-                                             'Thanks for using my bot :)')
+    try:
+        bot_helper.message_handler(message.chat.id,
+                                   "Hello, I'm the one who made this bot.\n"
+                                   "For now it`s giving you the translation of the words you need.\n"
+                                   "Later I will add new functions.\n"
+                                   "If you have some advices let me know on:\n"
+                                   "\n"
+                                   "https://t.me/erlihigh\n"
+                                   "https://github.com/Ilyadevin\n"
+                                   "Good Luck!", reply_markup=keyboard_settings()
+                                   )
+
+        bot_helper.send_message(message.chat.id, 'Also you can help me with development\n'
+                                                 'Just contact me with those methods above\n'
+                                                 'Thanks for using my bot :)')
+    except Exception as error:
+        bot_helper.send_message(message.chat.id, f'There is an unpredictable error - {error} try again')

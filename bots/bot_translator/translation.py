@@ -86,5 +86,5 @@ def settings_translate_and_result(message):
             )
             bot_helper.send_message(message.from_user.id, f'For now I use {lang}.\n'
                                                           f'If you want to change it - use settings\n')
-    except Exception as error_in_text:
-        bot_helper.send_message(message.from_user.id, error_in_text)
+    except Exception as error:
+        bot_helper.send_message(message.chat.id, f'There is an unpredictable error - {error} try again')
