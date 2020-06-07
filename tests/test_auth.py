@@ -1,11 +1,11 @@
 import unittest
-from tests.settings_test import test_config_helper_bot
+from tests.settings_test import test_token_T
 from bots.telegram_main_file import *
 
 
 class TestMockBot(unittest.TestCase):
     def setUp(self):
-        self.config = test_config_helper_bot
+        self.config = test_token_T
         self.bot = telebot.TeleBot(self.config)
 
     def tearDownClass(self):
