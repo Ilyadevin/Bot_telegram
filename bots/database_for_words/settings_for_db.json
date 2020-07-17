@@ -5,6 +5,7 @@
       "host_and_port": [
               "127.0.0.1",
               "5432"
-                        ]
+                        ],
+      "password":"Hello_I_am_your_bot",
     }
   ]
