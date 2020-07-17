@@ -9,7 +9,6 @@ class DataBase:
             self.reader = json.load(json_file)
     def connection_settings(self):
         for data in self.reader:
-
             connection = psycopg2.connect(database=f'{data['database_name']}',
                     user=f'{data['user']}',
                     password=f'{data['password']}',
@@ -22,9 +21,8 @@ class DataBase:
             try:
                 self.cursor.execute('''CREATE TABLE USERS
                 (ID SERIAL PRIMARY KEY NOT NULL,
-                USER_NAME TEXT NOT NULL
-                WORDS_TO_TRANSLATE TEXT NOT NULL
-                TRANSLATED_WORDS TEXT NOT NULL)'''
+                USER_NAME TEXT NOT NULL,
+                NATIVE_LANGUAGE TEXT NOT NULL,)'''
                 )
                 self.db_status = 1
             except Exception as error:

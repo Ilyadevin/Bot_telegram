@@ -1,6 +1,6 @@
 from bots.bot_translator.translation import *
 from bots.wiki_bot_func.wiki_link import *
-
+from bots.database_for_words import *
 
 @bot_helper.message_handler(commands=['start'])
 def start_message(message):
@@ -21,6 +21,7 @@ def start_message(message):
                     list(data_to_handle).append(message.text.lower().split(' '))
                     bot_helper.send_message(message.chat.id, 'Thanks for your help!/n'
                                                              'Your data will be used for in fucther updates')
+                    
                     return data_to_handle
             else:
                 bot_helper.send_message(message.chat.id, 'Ok, if change your mind, please use /start again')
