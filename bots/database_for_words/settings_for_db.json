@@ -1,0 +1,10 @@
+[
+    {
+      "database_name": "main_database",
+      "user": "helper_io",
+      "host_and_port": [
+              "127.0.0.1",
+              "5432"
+                        ]
+    }
+  ]
