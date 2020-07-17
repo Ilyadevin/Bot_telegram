@@ -14,16 +14,13 @@ def keyboard():
     language_portuguese = types.KeyboardButton('pt')
     language_indonesian = types.KeyboardButton('id')
     language_french = types.KeyboardButton('fr')
-    try:
-        markup.add(
-            language_english, language_russian, language_ukrainian,
-            language_icelandic, language_chinese, language_hindi,
-            language_arabic, language_bengal,
-            language_arabic, language_portuguese,
-            language_indonesian, language_french,
-        )
-    except Exception as error:
-        print(error)
+    markup.add(
+        language_english, language_russian, language_ukrainian,
+        language_icelandic, language_chinese, language_hindi,
+        language_arabic, language_bengal,
+        language_arabic, language_portuguese,
+        language_indonesian, language_french,
+    )
     return markup
 
 
@@ -31,10 +28,7 @@ def keyboard_settings():
     markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
     button_settings = types.KeyboardButton('settings')
     button_help = types.KeyboardButton('/help')
-    try:
-        markup.add(button_help, button_settings)
-    except Exception as error:
-        print(error)
+    markup.add(button_help, button_settings)
     return markup
 
 
@@ -44,13 +38,16 @@ def keyboard_settings_meeting():
     button_help = types.KeyboardButton('/help')
     button_meeting = types.KeyboardButton('Meet')
     button_info = types.ReplyKeyboardMarkup('info')
-    try:
-        markup.add(button_help,
-                   button_settings,
-                   button_meeting,
-                   button_info)
-    except Exception as error:
-        print(error)
+    markup.add(button_help,
+                button_settings,
+                button_meeting,
+                button_info)
+    return markup
+def keyboard_db():
+    markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
+    button_y = types.KeyboardButton('Y')
+    button_n = types.KeyboardButton('N')
+    markup.add(button_y, button_n)
     return markup
 
 
