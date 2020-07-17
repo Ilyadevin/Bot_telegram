@@ -9,6 +9,23 @@ def start_message(message):
         bot_helper.send_message(message.chat.id, 'Hello there! /help?',
                                 reply_markup=keyboard_settings()
                                 )
+        bot_helper.send_message(message.chat.id, 'I can remember your name, if you wish \n'
+                                                 'if you want it just send me "Y" in other case - "N" ')
+        @bot_helper.message_handler(content_types=['text'])
+        def write_in_db(message):
+            if message.text.lower() == 'y':
+                bot_helper.send_message(message.chat.id, 'I need these data about you - your name/nickname, your native language')
+                @bot_helper.message_handler(content_types=['text'])
+                def handler_of_data(message):
+                    data_to_handle = list()
+                    list(data_to_handle).append(message.text.lower().split(' '))
+                    bot_helper.send_message(message.chat.id, 'Thanks for your help!/n'
+                                                             'Your data will be used for in fucther updates')
+                    return data_to_handle
+            else:
+                bot_helper.send_message(message.chat.id, 'Ok, if change your mind, please use /start again')
+                return
+
     except Exception as error:
         bot_helper.send_message(message.chat.id, f'There is an unpredictable error - {error} try again')
 
