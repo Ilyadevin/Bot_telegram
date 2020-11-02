@@ -1,3 +1,1 @@
-import psyqo2
-
-class 
+from conf_packages.db_settings import *
