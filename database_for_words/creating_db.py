@@ -1,6 +1,6 @@
-import psycopg2
 import json
 import time
+from database_for_words.db import connection,cursor,psycopg2
 
 
 class DataBase:
@@ -13,13 +13,15 @@ class DataBase:
 
     def connection_settings(self):
         for data in self.reader:
-            connection = psycopg2.connect(database=f"{data['database_name']}",
-                                          user=f"{data['user']}",
-                                          password=f"{data['password']}",
-                                          host=f"{data['host_and_port'][0]}",
-                                          port=f"{data['host_and_port'][1]}",
-                                          )
-            self.cursor = connection.cursor()
+            connection = psycopg2.connect(
+                database=f"{data['database_name']}",
+                user=f"{data['user']}",
+                password=f"{data['password']}",
+                host=f"{data['host_and_port'][0]}",
+                port=f"{data['host_and_port'][1]}",
+                )
+            self.cursor = cursor()
+            self.cursor.execute()
 
     def creating_local(self):
         if self.db_status == 0:
